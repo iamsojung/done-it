@@ -2,7 +2,8 @@ package HS.ch02;
 
 import java.util.Scanner;
 
-// 구간 합 구하기 -- 미완성
+// BufferedReader, StringTokenizer를 쓰는게 더 좋겠다.
+// 입력받음과 동시에 합배열을 만드는게 좋겠다.
 public class Quiz003 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -14,10 +15,11 @@ public class Quiz003 {
             arr[k] = sc.nextInt();
         }
 
-        int[] sumArr = new int[n];
+        int[] sumArr = new int[n + 1];
         int sum = 0;
-        for (int k = 0; k < n; k++) {
-            sum += arr[k];
+        sumArr[0] = 0;
+        for (int k = 1; k < n + 1; k++) {
+            sum += arr[k - 1];
             sumArr[k] = sum;
         }
 
@@ -26,7 +28,7 @@ public class Quiz003 {
         for (int k = 0; k < count; k++) {
             int i = sc.nextInt();
             int j = sc.nextInt();
-            result[k] = sumArr[j-1] - sumArr[i-1];
+            result[k] = sumArr[j] - sumArr[i-1];
         }
 
         for (int k = 0; k < count; k++) {
